@@ -10,6 +10,6 @@ Deep-dip capitulation bot for the [make.fun "BTC race 24h" bounty](https://make.
 
 Strategy: buy 100% of equity when the close falls 4.00% or more below the trailing 240-bar high (a capitulation), then bank 25% at +4.0% and exit the remaining 75% on take-profit +5%, trailing stop -1.5% from the peak close, or stop-loss -2% under cost. There is no last-resort trade: a shallow-dip late-window buy was tested and loses on the older dev window, so the bot deliberately stays flat (PnL $0) in a mild window rather than taking a losing trade.
 
-Verified by the official harness (grade-local, process driver, 15 Nov 2026): dev net PnL +$45.57 (4.56%), 3 trades, 1 round-trip, max drawdown 0.51%, 0 rejected orders, guardrails compliant, deterministic (two runs byte-identical). Older dev window: $0.00, 0 trades. Backtester cross-check agrees to the cent (+$45.57 NEW / $0.00 OLD).
+Verified by the official harness (grade-local, process driver, 15 Nov 2026): dev net PnL +$45.57 (4.56%), 3 trades, 1 round-trip, max drawdown 0.53%, 0 rejected orders, guardrails compliant, deterministic (two runs byte-identical, action log sha256 22e11fd6b8135e96906e2682eb11be70918d15ed54f6bc8a3799a9161c85d1d8). Older dev window: $0.00, 0 trades (backtester cross-check, agrees to the cent).
 
 Run: the venue runs `main.ts` (Node 22, erasable TypeScript) against the bars-replay protocol; `vendor/makefun-bars.ts` is the kit's SDK shim, copied byte-identical.
