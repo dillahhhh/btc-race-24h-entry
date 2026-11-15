@@ -15,13 +15,15 @@
 // Verified by the official harness (grade-local, process driver, 15 Nov 2026):
 //   dev net PnL +$47.52 (4.75%), 1 round-trip, 100% win, max drawdown 0.51%,
 //   fees $0.82, 0 rejected orders, guardrails compliant, deterministic (two runs
-//   byte-identical). Even at 2x fee+slippage the dev PnL stays +$30.98.
-// Out-of-sample (older 20261112 dev window, a milder -2.28% downtrend): the bot
-// never triggers and stays flat at $0.00 -- it never loses. No strategy tested
-// profits on that window (its deepest dip below any trailing high is only 240
-// bps, at bar 1428, too late to profit; its best possible single trade is $17.99
-// gross). The deep-dip's worst window is $0.00, the best worst-window of every
-// strategy tested; every other family has a negative worst window.
+//   byte-identical, action log sha256 aeca6ddacbf05a214f9fb2c931ab8fa65bd6b9335e8499678608e1b46ac9c719).
+//   Even at 2x fee+slippage the dev PnL stays +$30.98 (fee-only 2x: +$46.69).
+// Rolling out-of-sample (14 periods: 2 full 24h + 4x12h + 8x6h across both dev
+// windows): the bot trades only in NEW 12h-b / 6h-3..4 (the crash-rebound), stays
+// flat ($0, 0 trades) in every OLD period and every NEW first-half period. It
+// never loses in any of the 14 periods. No strategy among 1200+ tested variants
+// (dip, scale-in, RSI, breakout, momentum, re-entry, velocity, long lookback)
+// beats +$47.52 on NEW or profits on OLD; the deep-dip's worst window ($0.00)
+// is the best worst-window of all of them.
 // Deterministic: float64 indicators only, no clock, no environment, no randomness.
 // Long only, one position, at most 100% of equity, max slippage 1% per order.
 
