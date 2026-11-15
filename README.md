@@ -6,7 +6,7 @@
 
 Deep-dip capitulation bot for the [make.fun "BTC race 24h" bounty](https://make.fun/bounty/btc-race-24h-20261115-0828) ($250 in USDC). Trades Coinbase Wrapped BTC (cbBTC) vs USDC, minute by minute, on a replay of on-chain Orca Whirlpool prices. Long only, one position, at most 100% of equity, $1,000 paper money.
 
-Strategy: buy 100% of equity when the close falls 4.00% or more below the trailing 240-bar high (a capitulation), then exit on take-profit +5%, trailing stop -1.5% from the peak value, or stop-loss -2% under cost. If no trade has happened by scored bar 1320 (last 2 hours), buy 25% of equity on a shallow -1.50% dip, same exits -- this guarantees at least one trade (the guardrail needs >= 1) in a mild window, with a small capped downside.
+Strategy: buy 100% of equity when the close falls 4.00% or more below the trailing 240-bar high (a capitulation), then exit on take-profit +5%, trailing stop -1.5% from the peak value, or stop-loss -2% under cost. There is no last-resort trade: a shallow-dip late-window buy was tested and loses on the older dev window, so the bot deliberately stays flat (PnL $0) in a mild window rather than taking a losing trade.
 
 Verified by the official harness (grade-local, process driver, 15 Nov 2026): dev net PnL +$47.52 (4.75%), 2 trades, 100% win, max drawdown 0.53%, fees $0.82, 0 rejected orders, guardrails compliant, deterministic (two runs byte-identical). Even at 2x fees the dev PnL stays +$46.69.
 
